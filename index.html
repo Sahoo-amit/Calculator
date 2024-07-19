@@ -78,7 +78,7 @@
 <body>
     <div id="container">
         <div id="input-field">
-            <input type="text" placeholder="0">
+            <input type="text" placeholder="0" readonly>
         </div>
         <div id="btn">
             <div>
@@ -127,8 +127,12 @@
                     inputField.value = str
                 }
                 else if(evt.target.innerText == "="){
-                    str = eval(str)
-                    inputField.value = str
+                    try {
+                        str = eval(str)
+                        inputField.value = str
+                    } catch (error) {
+                        inputField.value = "error"
+                    }
                 }
                 else{
                     str += evt.target.innerText
